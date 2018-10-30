@@ -1,0 +1,481 @@
+@charset "utf-8";
+/* ====== FORMS SCSS ====== */
+
+
+//************ GLOBALE FORM-INSTELLINGEN **************
+/* ==== iconen voor validatie ==== */
+.fa-check{
+    font-size: 1.4rem;
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    color: #{map-get($colors, correctColor)};
+    padding: 0 0.2em 0 0;
+    
+}
+.fa-times{
+    font-size: 1.4rem;
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    color: #{map-get($colors, errorColor)};
+    padding: 0 0.2em 0 0;
+    
+}
+#mail,#name,#pc, #adr, #wp{
+    position: relative;
+    
+}
+
+/*==== formulier instellingen ==== */
+//label
+label{  
+        font-family: $bodyFont;
+        font-size: 0.8rem;
+     }
+
+
+//input,textarea
+input, textarea{
+        // height: 30px;
+         padding: 0 0.5em;
+         margin: 0 0 2% 0;
+         font-family: $bodyFont;
+         font-size: 0.8rem;
+         color: #{map-get($colors, contrast)};
+         border: 1px solid #{map-get($colors, neutral)};
+         &:focus{
+             outline: #{map-get($colors, primaryLighter)} auto 5px;
+         }
+         &::placeholder{
+             font-size: 0.8rem;
+             font-style: italic;
+             opacity: 1; //vanwege firefox die lichte tinten gebruikt.
+         }
+       
+}
+
+//input type email en postcode vanwege de pattern
+input[type="email"],
+input[type="text"]{
+        // voor de browser-validatie
+        &:valid{
+            border: 1px solid #{map-get($colors, primaryLighter)};
+        }
+        &:invalid{
+            border: 1px solid #{map-get($colors, contrast)};
+        }
+        //voor de js-validatie
+        &.valid{
+            border: 2px solid #{map-get($colors, correctColor)};
+        }
+        &.invalid{
+            border: 2px solid #{map-get($colors, errorColor)};
+        }
+}  
+//input type submit
+input[type="submit i"],
+input[type="submit"]{
+        color: #{map-get($colors, neutral)};
+        box-sizing: content-box;
+        background-color: #{map-get($colors, contrast)};
+        transition: background-color 1s, color 2s;
+            
+        &:hover{
+            background-color: #{map-get($colors, neutral)};
+            color: #{map-get($colors, contrast)};
+            cursor: pointer;
+        } 
+}
+//textarea        
+textarea{
+        border: 1px solid #{map-get($colors, neutral)};
+        resize: none;
+        height: 150px;
+}
+
+//checkbox, radiobox
+input[type="checkbox"],
+input[type="radio"]{
+        font-family: $bodyFont;
+        font-size: 0.8rem; 
+        margin: 0 2% 0 0;
+}
+
+
+//************ NIEUWSBRIEF **************
+.info{
+        background-color: #{map-get($colors, primary)};
+        color: #{map-get($colors, neutral)};
+        & > div{                    /* de div met de flex-container erin. */
+            height: 350px;
+            flex-direction: column;
+        @include breakpoint(desktop){
+                height: 200px;
+                flex-direction: row;
+            }
+        }
+        // uitlijnen van de flex-items in het midden   
+        .nieuwsbrief,
+        .bgLogo{
+                align-self: center;
+        }
+        // tweede flex-item  met logo
+        .bgLogo {
+                padding: 0 0 0 0.5rem;
+                @include breakpoint(desktop){
+                    border-left: 1px solid #{map-get($colors, primaryDarker)};
+                }
+                img{            
+                    width: 200px;
+                    @include breakpoint(desktop){
+                        width : 250px;
+                    }        
+                }
+        }
+        // eerste flex-item met input veld
+        .nieuwsbrief {
+            font-family: $headFont;
+            letter-spacing: 0.075em;
+            text-align: center;
+
+            h2{
+                padding: 1em;
+                line-height: 1.2em;
+            }
+            //label
+            label{display: none;} //weghalen van het label
+            input{ height: 25px;}
+            input[type="email"]{
+                width: 75%;
+                background-color: #{map-get($colors, greyLighter)};
+                @include breakpoint(desktop){
+                    width:60%;
+                }
+            }
+            input[type="submit"]{
+                width: 75%;
+                @include breakpoint(desktop){
+                    width: 30%;
+                }
+            }
+        }
+}   //einde section info
+
+
+
+//************ CONTACT-PAGINA **************
+/* ====== google-maps instellingen ====== */
+.maps{
+        position: relative;
+        width: 100%;
+        height: auto;
+        background-color: #{map-get($colors, primaryLighter)};
+        box-sizing: content-box;
+        padding: 0.7em 0;
+   
+        iframe{
+            width: 100%;
+            height: 300px;
+        }
+}
+#location{
+        pointer-events: none; // click opties uitzetten
+        &.clicked{ /* 'onclick' voegt JQuery voor ons de class "clicked" toe en zal deze selector gaan gelden. */
+            pointer-events: auto; 
+        }   
+}
+
+/* ====== specificaties contactformulier ====== */
+#contactFormulier{
+        @include breakpoint(tablet){
+            width: 40vw;
+            }
+        @include breakpoint(desktop){
+            max-width: 750px;
+            }
+
+        background-color: #{map-get($colors, primaryLighter)};
+        margin: 5% auto;
+        text-align: center;
+     
+        
+        //label
+        label{display: none;} //weghalen van het label      
+        legend, p{
+            font-family: $headFont;
+            color: #{map-get($colors, grey)};
+            letter-spacing: 0.09em;
+            }
+        legend{
+            color: #{map-get($colors, primary)};
+            font-size: 1.1rem;
+            padding: 1em 0 0 0;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1.2em;
+            width: 100%;
+            text-align: center;
+            }   
+        p{
+            padding: 0 0 2em 0;
+            font-style: italic;
+            }
+        input,textarea{
+            width: 80%;
+            }
+        input{
+            height: 25px;
+            }
+        .excerpt {
+            font-size: 0.6rem;
+            font-style: italic;
+            text-align: right;
+            padding: 0.5em 1em;
+                }
+    } //einde contactformulier
+
+.formulier{
+        @include breakpoint(tablet){
+            padding: 0.5em 0;
+            float: right;
+            }
+        } //einde formulier-class
+        
+.contactPage{
+        @include breakpoint(tablet){
+            float: left;
+            margin: 0 0 0 5%;
+            }
+        @include breakpoint(desktop){
+            margin: 0 0 0 15%;
+            }
+    
+    a,p,li{
+            font-family: $bodyFont;
+            color: #{map-get($colors, primaryDarker)};
+            text-align: left;
+            letter-spacing: 0.10em;
+            padding: 0.5em 0;
+            line-height: 1.5em;
+            }
+    p{
+            text-align: center;
+            &::after{
+                    content: "";
+                    display: block;
+                    margin: 0 auto;
+                    border-bottom: 1px solid #{map-get($colors, contrast)};
+                    width: 15em;
+                    height: 2px;
+                    }
+            }
+    span{
+            padding: 0 0.5em 0 0;
+            }
+} //einde contactinfo
+
+
+
+//************ BESTEL-FORMULIER **************
+
+#bestelFormulier{
+            font-family: $bodyFont;
+            color: #{map-get($colors, primaryDarker)};
+            padding: 1em;
+    #btnMan,
+    #btnVrouw{
+            display: inline;
+            margin: 0 2% 2% 0;
+            }
+    legend{
+            text-align: center;
+            line-height: 1.2em;
+            margin: 0 0 1rem 0;
+            padding: 0.5em;
+            }
+    
+    fieldset{
+            margin: 1rem 0;
+            }
+    input[type="text"],
+    input[type="submit"],
+    input[type="email"],
+    input[type="tel"]{
+            width: 80%;
+            height: 20px;
+            padding: 12px 20px;    
+            display: inline-block;
+            
+            }
+    input[type="radio"]{
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            box-sizing: content-box;
+            margin: 0;
+            }
+    input:not([type="submit"]){     //deze moet de contrast-kleur behouden van de knop
+                background-color: #{map-get($colors, primaryLighter)};
+            }
+            
+             
+/* ====== klantgegevens ====== */
+    .klantgegevens{
+            border: 1px solid #{map-get($colors, primary)};
+            padding: 1em;
+            
+            //label
+            label{display: none;} //weghalen van het label
+            
+            div{
+                margin: 2% 0;
+                }
+        @include breakpoint(desktop){
+             label{
+                font-size: 0.8rem;
+                width: 15vw;
+                display: inline-block;
+                margin: 0 0.5em 0 0;
+                }
+                input:not([type="radio"]){
+                    width: 50vw;
+                }
+            }
+            
+    }    //einde klantgegevens
+            
+            
+/* ====== bestelitems ====== */            
+    .bestelgegevens {
+        border: 1px solid #{map-get($colors, primary)};
+        padding: 1em;
+        label{
+            display: inline-block;
+            span{
+                font-weight: 300;
+                font-style: italic;
+                padding: 0 0.5em;
+                &::before{
+                    content:"- € ";
+                    }
+                }
+            }   
+        input[type="checkbox"]{
+                width: 20px;
+                height: 20px;
+                }
+       //flexbox instellingen voor bestelling         
+       div {
+                @include breakpoint(desktop){    //verander bij desktop naar row zodat er twee kolommen worden gevormd.
+                     flex-direction: row;
+                     flex-wrap: wrap;
+                     }
+                flex-direction: column;
+                width: 100%;
+                justify-content: flex-start;
+                }  
+                
+                .bestelItem{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                       @include breakpoint(desktop){
+                            width: 50%;
+                          }
+                       padding: 0.5em 0;
+                    }
+            
+       
+    }   //einde bestelgegevens
+    
+    /* ====== kostenoverzicht ====== */
+    .totalCosts {
+            #costs::before{
+                content: " € "
+            }
+                background-color: #{map-get($colors, primaryLighter)};
+                padding: 2em;
+                margin: 2% auto;
+                border: 1px solid #{map-get($colors, primaryDarker)};
+                
+                div:first-of-type p{
+                            margin: 2% auto;
+                            text-align: center;
+                            height: 30px;
+                            }
+                input[type="submit"]{
+                            display: block;
+                            width: 30%;
+                            margin: 0 auto;
+                            }
+                }//einde totalCosts
+        
+} //einde bestelformulier
+
+/* de slider die met js zichtbaar wordt */
+#slider{
+    position: fixed;
+    bottom: 20px;
+    right: -400px;
+    z-index: 999;
+    width: 300px;
+    
+}
+// indien geen js beschikbaar, dan kan me het formulier gebruiken en insturen.
+#manueelBestellen {
+            background-color: #{map-get($colors, contrastLighter)};
+            border: 1px solid #{map-get($colors, contrast)};
+            padding: 2em;
+            margin: 1em;
+            p,a {color: #{map-get($colors, grey)}; line-height: 1.3em;}
+            input[type="file"]{
+                display: block;
+                padding: 1em 0;
+                margin: 2% auto;
+                border: none;
+                }
+            }
+
+            
+//************ FILTERING **************          
+#filters {
+        display: none;
+        font-family: $bodyFont;
+        color: #{map-get($colors, primary)};
+        flex-direction: column;
+        background-color: #{map-get($colors, primaryLighter)};
+        border: 1px solid #{map-get($colors, primaryDarker)};
+        margin: 0 0 2rem 0;
+        @include breakpoint(largePhone){
+            width: 30vw;
+        }
+        @include breakpoint(tablet){
+            width: 300px;
+        }
+        form{
+            padding: 1rem;
+        }
+
+}
+
+  
+#filterWaardering,
+#filterCategorie{
+        background-color: #{map-get($colors, primaryLighter)};
+        width: 100%;
+        margin: 5%;
+        div{
+            font-size: 0.8rem;
+        } 
+      
+        label{
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 2rem;
+            letter-spacing: 0.09em;
+            }
+        div{
+                margin-bottom: 1em;
+            }
+}

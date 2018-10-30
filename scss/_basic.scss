@@ -1,0 +1,232 @@
+@charset "utf-8";
+/* ====== BASIC SCSS ====== */
+
+//************ VARIABELEN **************
+
+// ====== font ====== 
+$headFont   :   'Roboto', sans-serif;
+$bodyFont   :   'Open Sans', sans-serif;
+$iconFont   :   'FontAwesome';
+
+// ====== kleurstijlen ====== 
+$colors:(
+        primary         : #578176,                  //  groene tint
+        primaryLighter  : lighten(#578176, 50%),    //  lichtgroen
+        primaryDarker   : darken(#578176, 10%),     //  donker groen
+        contrast        : #B46776,                  //  contrast tint
+        contrastLighter : lighten(#B46776, 40%),     // lichtere contrast
+        neutral         : #FFFFFF,                  //  wit
+        grey            : #555555,                  //  grijs
+        greyLighter     : lighten(#555555, 50%),    //  lichtgrijs
+        greyDarker      : darken(#555555, 10%),      //  donkergrijs
+        errorColor      : #FF2424,                   // rode kleur voor validatie
+        correctColor    : #24FF24                    // groene kleur voor validatie
+);
+
+// ====== mediaqueries ====== */
+$breakpoint: (
+        smallPhone  :   320px,
+        largePhone  :   540px,
+        tablet      :   768px,
+        desktop     :  1024px
+);
+
+
+//*************** MIXINS ******************
+
+// ====== breakpoint-mixin ======
+@mixin breakpoint($point){
+        @if $point == smallPhone{
+            @media (max-width: #{map-get($breakpoint, $point)}){
+                @content;
+            }
+        }
+        @else if $point == largePhone{
+            @media (min-width: #{map-get($breakpoint, $point)}){
+                @content;
+            }
+        }
+        @else if $point == tablet {
+            @media (min-width: #{map-get($breakpoint, $point)}){
+                @content;
+            }
+        }
+        @else if $point == desktop {
+            @media (min-width: #{map-get($breakpoint, $point)}){
+                @content;
+            }
+        }
+} 
+
+// ====== box-shadows-mixin ====== 
+//gebruik waarde 1-5
+@mixin boxShadow($waardeBox) {
+
+        @if $waardeBox == 1 {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        } @else if $waardeBox == 2 {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        } @else if $waardeBox == 3 {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        } @else if $waardeBox == 4 {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        } @else if $waardeBox == 5 {
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+}
+
+// ====== text-shadows-mixin ====== 
+// gebruik waarde 1-3
+@mixin textShadow($waardeText) {
+
+        @if $waardeText == 1 {
+            text-shadow: 3px 3px 3px rgba(0,0,0,0.15)
+        } @else if $waardeText == 2 {
+            text-shadow: 3px 3px 3px rgba(0,0,0,0.25)
+        } @else if $waardeText == 3 {
+            text-shadow: 3px 3px 3px rgba(0,0,0,0.35)
+        }
+}
+
+
+//*************** EXTENDS ******************
+
+
+/* ====== aanmaken van een extend-selector voor de call-to-action-buttons ======*/
+
+%cta{
+    font-family: $bodyFont;
+    font-weight: 300;
+    padding: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    transition: background-color 1s, border-color 1s, color 2s;
+    &:hover{
+                    background-color: #{map-get($colors, contrast)};
+                    border-color: #{map-get($colors, neutral)};
+                    color: #{map-get($colors, neutral)};
+    }
+}
+
+// witte border met witte tekst
+.ctaWhite{
+            @extend %cta;
+            border-color: #{map-get($colors, neutral)};
+            color: #{map-get($colors, neutral)};
+            
+           
+}
+
+// grijze border met grijze tekst
+.ctaGrey{
+            @extend %cta;
+            border-color: #{map-get($colors, grey)};
+            color: #{map-get($colors, grey)};
+            
+          
+}
+
+// contrast-kleur border met contrast-kleur tekst
+.ctaContrast{
+            @extend %cta;
+            border-color: #{map-get($colors, contrast)};
+            color: #{map-get($colors, contrast)};
+            
+            
+        
+}
+
+.ctaContrastBg{
+            @extend %cta;
+            background-color: #{map-get($colors, contrast)};
+            color: #{map-get($colors, neutral)};
+            border-color: #{map-get($colors, contrast)};
+            &:hover {
+                background-color: #{map-get($colors, neutral)};
+                color: #{map-get($colors, contrast)};
+                border-color: #{map-get($colors, contrast)};
+            }
+            
+}
+
+.ctaAdd {
+            width: 50%;
+            display: inline-block;
+            margin: 5% auto;
+            text-align: center; //uitlijnen van de link-tekst;
+}
+
+//*************** EXPRESSIONS ******************
+
+/* ====== background-images swap ====== */
+//dit kijkt naar de active pagina. Wanneer de class 'active' heeft zal deze de background-icoon veranderen.
+$navItem:(home, boek, recept, video, bestellen, contact);
+
+@each $item in $navItem{
+	li.active.#{$item}{
+		background-image: url('../images/icons/#{$item}-contrast.svg') !important; //proximity regel
+	}	
+       
+}
+
+
+//*************** BASIC SETTINGS ******************
+
+/* ====== font-size-settings ====== */
+html{
+        font-size: 100%;
+        @include breakpoint(tablet){
+            font-size: 115%;        
+        }
+        @include breakpoint(desktop){
+            font-size: 125%;
+        }
+}
+
+h1 {
+    font-family: $headFont;
+    font-size: 1.6rem;
+}
+
+h2 {
+    font-family: $headFont;
+    font-size: 1.2rem;
+}
+h3 {
+    font-size: 1rem;
+}
+p, a, li {
+    font-family: $bodyFont;
+    font-size: 0.8rem;
+}
+
+
+
+/* ====== container settings ====== */
+.wideContainer{
+        width: 100%;
+        padding: 1rem 2rem;
+        clear: both;
+        overflow: hidden;
+        
+}
+
+.smallContainer{
+        width: 80vw;
+        margin: 0 auto;
+        padding: 2rem 0;
+        position: relative;
+        clear: both;
+        overflow: hidden;
+}
+
+.flexContainer{
+        display: flex;
+        justify-content: space-around;
+        
+}
+
+.gridContainer{
+        @include grid-container;
+       //@include grid-visual;
+}

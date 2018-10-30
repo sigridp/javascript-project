@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+/*****   PRINT SCSS   *****/
+
+@media print{
+    //overbodige menu delen kunnen weg
+    #siteHeader, aside, footer {
+        display: none;
+    }
+  
+    // ivm inktbesparing img ook weg
+    #recept img{
+        display: none;
+    }
+
+    .videoPage, #video1, #video2{
+        display: none;
+    }
+}

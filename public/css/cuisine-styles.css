@@ -1,0 +1,1340 @@
+@charset "UTF-8";
+/* 
+    Created on : 25-feb-2018, 8:04:14
+    Author     : sipruis
+*/
+/*****   SETUP SCSS *****/
+/* ====== fonts ====== */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+@import url("https://use.fontawesome.com/releases/v5.0.6/css/all.css");
+/* ====== CSS RESET ====== */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  text-decoration: none; }
+
+input[type="text"],
+input[type="submit"],
+input[type="submmit i"],
+input[type="email"],
+textarea {
+  -webkit-appearance: none;
+  appearance: none; }
+
+/* ====== BASIC SCSS ====== */
+/* ====== aanmaken van een extend-selector voor de call-to-action-buttons ======*/
+.ctaWhite, .ctaGrey, .ctaContrast, .ctaContrastBg {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  padding: 0.5rem;
+  border-width: 1px;
+  border-style: solid;
+  transition: background-color 1s, border-color 1s, color 2s; }
+  .ctaWhite:hover, .ctaGrey:hover, .ctaContrast:hover, .ctaContrastBg:hover {
+    background-color: #B46776;
+    border-color: #FFFFFF;
+    color: #FFFFFF; }
+
+.ctaWhite {
+  border-color: #FFFFFF;
+  color: #FFFFFF; }
+
+.ctaGrey {
+  border-color: #555555;
+  color: #555555; }
+
+.ctaContrast {
+  border-color: #B46776;
+  color: #B46776; }
+
+.ctaContrastBg {
+  background-color: #B46776;
+  color: #FFFFFF;
+  border-color: #B46776; }
+  .ctaContrastBg:hover {
+    background-color: #FFFFFF;
+    color: #B46776;
+    border-color: #B46776; }
+
+.ctaAdd {
+  width: 50%;
+  display: inline-block;
+  margin: 5% auto;
+  text-align: center; }
+
+/* ====== background-images swap ====== */
+li.active.home {
+  background-image: url("../images/icons/home-contrast.svg") !important; }
+
+li.active.boek {
+  background-image: url("../images/icons/boek-contrast.svg") !important; }
+
+li.active.recept {
+  background-image: url("../images/icons/recept-contrast.svg") !important; }
+
+li.active.video {
+  background-image: url("../images/icons/video-contrast.svg") !important; }
+
+li.active.bestellen {
+  background-image: url("../images/icons/bestellen-contrast.svg") !important; }
+
+li.active.contact {
+  background-image: url("../images/icons/contact-contrast.svg") !important; }
+
+/* ====== font-size-settings ====== */
+html {
+  font-size: 100%; }
+  @media (min-width: 768px) {
+    html {
+      font-size: 115%; } }
+  @media (min-width: 1024px) {
+    html {
+      font-size: 125%; } }
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem; }
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem; }
+
+h3 {
+  font-size: 1rem; }
+
+p, a, li {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem; }
+
+/* ====== container settings ====== */
+.wideContainer {
+  width: 100%;
+  padding: 1rem 2rem;
+  clear: both;
+  overflow: hidden; }
+
+.smallContainer {
+  width: 80vw;
+  margin: 0 auto;
+  padding: 2rem 0;
+  position: relative;
+  clear: both;
+  overflow: hidden; }
+
+.flexContainer {
+  display: flex;
+  justify-content: space-around; }
+
+.gridContainer::after {
+  clear: both;
+  content: "";
+  display: block; }
+
+/* ====== HEADER SCSS ====== */
+#siteHeader {
+  background-color: #FFFFFF; }
+  #siteHeader li {
+    /* instellingen voor het plaatsen van iconen voor alle li's in de header */
+    background-repeat: no-repeat; }
+
+/* ====== hamburgermenu ====== */
+#siteHeader .menuBars {
+  width: calc(25% - 25px);
+  float: left;
+  margin-left: 20px; }
+  #siteHeader .menuBars a {
+    /* vormgeven van de menu-bars */
+    font-size: 2.5rem;
+    color: #578176;
+    padding: 1.5rem 0 0 0; }
+  @media (min-width: 768px) {
+    #siteHeader .menuBars {
+      display: none; } }
+
+/* ====== logo cuisine ====== */
+#siteHeader .logo {
+  width: 100%;
+  height: auto;
+  width: calc(50% - 30px);
+  float: left;
+  margin-left: 20px; }
+  @media (min-width: 768px) {
+    #siteHeader .logo {
+      margin-left: calc(25% - 25px + 40px); } }
+  #siteHeader .logo img {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px; }
+
+/* ====== inlog-menu ====== */
+.topHeader .navMenu {
+  width: calc(25% - 25px);
+  float: left;
+  margin-left: 20px;
+  /* bovenste header moet rechts uitgelijnd worden ten opzichte van het logo */ }
+  .topHeader .navMenu ol {
+    padding: 2rem 0 0 0; }
+    .topHeader .navMenu ol li {
+      width: 100%;
+      /* anders valt het icon weg */
+      height: auto; }
+      .topHeader .navMenu ol li:nth-child(2) {
+        visibility: hidden; }
+      .topHeader .navMenu ol li a img {
+        width: 2rem;
+        transition: background-color 1s ease-in-out;
+        border-radius: 50%;
+        padding: 0.5em;
+        box-sizing: content-box; }
+      .topHeader .navMenu ol li a:hover img {
+        background-color: #f7f0f1; }
+
+/* ====== navigatie-menu ====== */
+.bottomHeader {
+  position: absolute;
+  padding: 1rem 0;
+  /* even minder padding dan de container van origine heeft */
+  top: 0;
+  left: -999px;
+  bottom: 0;
+  z-index: 20;
+  background-color: #FFFFFF;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .bottomHeader {
+      position: relative;
+      width: 80vw;
+      border-top: 1px solid #B46776;
+      left: 0; } }
+  .bottomHeader .closeMenu {
+    color: #B46776;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 20px;
+    right: 30px; }
+    @media (min-width: 768px) {
+      .bottomHeader .closeMenu {
+        display: none; } }
+  .bottomHeader nav.navMenu ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 2rem; }
+    .bottomHeader nav.navMenu ul li {
+      padding: 1rem 0;
+      background-size: 1.5rem;
+      background-position: 0 center;
+      text-indent: 2rem;
+      border-bottom: 1px solid #578176;
+      /* home */
+      /* boeken */
+      /* recepten */
+      /* video */
+      /* bestellen */
+      /* contact */
+      /* onderste krijgt geen lijntje */
+      /* weghalen van de iconen bij scrollen -> js functionaliteit */ }
+      .bottomHeader nav.navMenu ul li:nth-child(1) {
+        background-image: url("../images/icons/home-primary.svg"); }
+      .bottomHeader nav.navMenu ul li:nth-child(2) {
+        background-image: url("../images/icons/boek-primary.svg"); }
+      .bottomHeader nav.navMenu ul li:nth-child(3) {
+        background-image: url("../images/icons/recept-primary.svg"); }
+      .bottomHeader nav.navMenu ul li:nth-child(4) {
+        background-image: url("../images/icons/video-primary.svg"); }
+      .bottomHeader nav.navMenu ul li:nth-child(5) {
+        background-image: url("../images/icons/bestellen-primary.svg"); }
+      .bottomHeader nav.navMenu ul li:nth-child(6) {
+        background-image: url("../images/icons/contact-primary.svg");
+        border-bottom: 0px; }
+      @media (min-width: 768px) {
+        .bottomHeader nav.navMenu ul li.hide {
+          background-image: none !important;
+          padding: 0; } }
+      .bottomHeader nav.navMenu ul li.active a {
+        color: #B46776;
+        /* in verband met proximity op deze plek */ }
+      .bottomHeader nav.navMenu ul li a {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+        color: #578176;
+        padding: 0 1rem;
+        transition: background-color 1s, color 2s; }
+        .bottomHeader nav.navMenu ul li a:hover {
+          background-color: #B46776;
+          color: #FFFFFF; }
+    @media (min-width: 768px) {
+      .bottomHeader nav.navMenu ul {
+        flex-direction: row;
+        justify-content: space-around;
+        padding-left: 0; }
+        .bottomHeader nav.navMenu ul li {
+          border-bottom: 0px;
+          padding-top: 2em;
+          background-position: center 0;
+          text-indent: 0; } }
+
+/* ====== MAIN SCSS ====== */
+.homePage {
+  background-image: url(../images/overige/bg-oil.jpg); }
+
+.boekenPage,
+.ordering {
+  background-image: url(../images/overige/bg-cookbook.jpg); }
+
+.receptenPage,
+.videoPage {
+  background-image: url(../images/overige/bg-knife.jpg); }
+
+.heroImage {
+  height: 300px;
+  background-color: #555555;
+  background-size: cover;
+  background-position: center center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .heroImage h1 {
+    font-size: 0; }
+  .heroImage h2, .heroImage p, .heroImage a {
+    letter-spacing: 0.15em;
+    margin: 0 0 2% 0;
+    text-align: center; }
+  .heroImage h2, .heroImage p {
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.35);
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 2em;
+    font-weight: 700;
+    color: #FFFFFF;
+    padding: 0 2em; }
+  .heroImage h2 {
+    font-weight: 700;
+    text-transform: uppercase; }
+  .heroImage p {
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: italic; }
+  .heroImage a {
+    display: block; }
+
+.introduction {
+  background-color: #d5d5d5;
+  color: #555555; }
+  .introduction h2, .introduction h3 {
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    line-height: 2.5em;
+    letter-spacing: 0.08em; }
+    .introduction h2::after, .introduction h3::after {
+      content: '';
+      display: block;
+      border-bottom: 1px solid #B46776;
+      width: 100px;
+      margin: 0 auto 2% auto; }
+  .introduction p {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.8em;
+    letter-spacing: 0.1em;
+    text-align: center; }
+    .introduction p:first-of-type {
+      margin: 0 0 1em 0; }
+    .introduction p.leftContent {
+      text-align: left; }
+  .introduction a {
+    display: block;
+    margin: 2% auto;
+    width: 8em;
+    text-align: center; }
+
+#products {
+  background-color: #FFFFFF; }
+  #products .flexContainer {
+    flex-wrap: wrap;
+    width: 100%; }
+  #products .cards {
+    display: flex;
+    padding: 1rem 0;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% 0;
+    width: 100%;
+    border-bottom: 1px solid #d5d5d5; }
+    #products .cards:nth-child(4) {
+      border-bottom: none; }
+    @media (min-width: 540px) {
+      #products .cards {
+        flex-direction: row;
+        width: 45%; }
+        #products .cards:nth-child(3), #products .cards:nth-child(4) {
+          border-bottom: none; } }
+    @media (min-width: 1024px) {
+      #products .cards {
+        width: 23.3%;
+        border-bottom: none; } }
+    #products .cards .flexContent {
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
+      width: 100%;
+      min-height: 250px;
+      margin: 5% 0 0 0; }
+      @media (min-width: 1024px) {
+        #products .cards .flexContent {
+          padding: 0.5em;
+          min-height: 350px; } }
+      #products .cards .flexContent img {
+        display: block;
+        margin: 0 auto 5% auto;
+        width: 75px;
+        background-color: #B46776;
+        padding: 1em 2em;
+        box-sizing: content-box;
+        border-radius: 5%; }
+  #products h2,
+  #products h3,
+  #products p {
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+    letter-spacing: 0.07em;
+    color: #42635a;
+    padding: 0.5em 1.8em; }
+  #products p {
+    font-weight: 300;
+    flex: 1 0 auto; }
+  #products h2 + p {
+    font-style: italic; }
+  #products .wideContainer > div:first-of-type::after {
+    content: '';
+    display: block;
+    width: 40%;
+    height: 20px;
+    border-bottom: 1px solid #B46776;
+    margin: 0 auto; }
+
+.introduction a.downloadLink {
+  color: #42635a;
+  font-style: italic;
+  display: inline; }
+
+.alternatief {
+  padding: 1rem; }
+  .alternatief a {
+    width: 150px;
+    height: 250px;
+    margin: 2% 4%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #578176;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
+  .alternatief img {
+    margin: 0 0 5% 0;
+    display: block;
+    width: 150px;
+    height: auto; }
+
+.rating {
+  color: #B46776;
+  text-align: center; }
+
+.bookOverview,
+.receptenOverview {
+  padding: 1rem;
+  flex-direction: column-reverse; }
+  @media (min-width: 540px) {
+    .bookOverview,
+    .receptenOverview {
+      justify-content: space-between;
+      margin: 5% 0;
+      flex-direction: row-reverse;
+      align-items: flex-start; } }
+  .bookOverview .ctaAdd,
+  .receptenOverview .ctaAdd {
+    width: 100%; }
+
+#books,
+#recipes {
+  width: 80vw;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: #578176; }
+
+#productsContainer {
+  position: relative;
+  text-align: center;
+  overflow: hidden; }
+  #productsContainer > div {
+    width: 250px;
+    height: 400px;
+    text-align: center;
+    border: 1px solid #B46776;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 0 auto 1rem auto; }
+    @media (min-width: 768px) {
+      #productsContainer > div {
+        margin: 0 1rem 1rem 1rem;
+        float: left; } }
+    #productsContainer > div h2 {
+      font-size: 1rem; }
+    #productsContainer > div h2, #productsContainer > div p, #productsContainer > div div {
+      padding-bottom: 1rem; }
+    #productsContainer > div img {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      width: 55%;
+      margin: 0.5rem 0; }
+
+#receptenContainer {
+  position: relative;
+  text-align: center;
+  overflow: hidden; }
+  #receptenContainer > div {
+    width: 250px;
+    height: 400px;
+    text-align: center;
+    border: 1px solid #B46776;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 0 auto 1rem auto; }
+    @media (min-width: 768px) {
+      #receptenContainer > div {
+        margin: 0 1rem 1rem 1rem;
+        float: left; } }
+    #receptenContainer > div h2 {
+      font-size: 1rem; }
+    #receptenContainer > div h2, #receptenContainer > div p, #receptenContainer > div div {
+      padding: 0.5em 0; }
+    #receptenContainer > div img {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      width: 75%;
+      margin: 0.5rem 0; }
+  #receptenContainer .infoGerecht {
+    text-align: center;
+    margin: 0 0 1rem 0; }
+    #receptenContainer .infoGerecht li {
+      background-size: 30px 30px;
+      background-repeat: no-repeat;
+      height: 35px;
+      padding: 0.5em 0 0 0;
+      width: 75%;
+      margin: 0 auto;
+      text-align: left;
+      text-indent: 50px; }
+    #receptenContainer .infoGerecht li.tijd {
+      background-image: url(../images/icons/clock-contrast.svg); }
+    #receptenContainer .infoGerecht li.personen {
+      background-image: url(../images/icons/bestek-contrast.svg); }
+
+.retourPage a {
+  color: #B46776; }
+
+.confirmation {
+  background-color: #e8efed;
+  padding: 2rem;
+  height: 400px;
+  width: 500px;
+  margin: 0 auto; }
+  .confirmation p {
+    line-height: 1.5rem;
+    padding: 1rem;
+    text-align: center; }
+  .confirmation img {
+    margin: 1%;
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto; }
+
+/* ====== CONTENT SCSS ====== */
+#recept, #boek, #video1, #video2 {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0; }
+  @media (min-width: 768px) {
+    #recept, #boek, #video1, #video2 {
+      flex-direction: row;
+      align-items: flex-start; } }
+  #recept p, #recept li, #boek p, #boek li, #video1 p, #video1 li, #video2 p, #video2 li {
+    font-family: "Open Sans", sans-serif;
+    color: #42635a; }
+  #recept img, #boek img, #video1 img, #video2 img {
+    border: 1px solid #578176;
+    padding: 1rem;
+    width: 100%; }
+  #recept .summary, #boek .summary, #video1 .summary, #video2 .summary {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 0; }
+    @media (min-width: 768px) {
+      #recept .summary, #boek .summary, #video1 .summary, #video2 .summary {
+        margin: 0 0 0 1rem;
+        align-items: flex-start; } }
+    #recept .summary div:nth-child(3), #boek .summary div:nth-child(3), #video1 .summary div:nth-child(3), #video2 .summary div:nth-child(3) {
+      padding: 1rem; }
+    #recept .summary .ingredients, #boek .summary .ingredients, #video1 .summary .ingredients, #video2 .summary .ingredients {
+      width: 100%;
+      padding: 1rem; }
+      #recept .summary .ingredients p, #boek .summary .ingredients p, #video1 .summary .ingredients p, #video2 .summary .ingredients p {
+        font-weight: 700;
+        padding: 0 0 0.5rem 0; }
+      #recept .summary .ingredients ul, #boek .summary .ingredients ul, #video1 .summary .ingredients ul, #video2 .summary .ingredients ul {
+        list-style-position: inside;
+        list-style-type: square; }
+      #recept .summary .ingredients li, #boek .summary .ingredients li, #video1 .summary .ingredients li, #video2 .summary .ingredients li {
+        line-height: 1.2rem; }
+
+#recept span, #boek span {
+  font-family: "Open Sans", sans-serif;
+  color: #42635a;
+  font-weight: 300; }
+
+.shortInfo,
+.bookInfo {
+  width: 80vw;
+  border-bottom: 1px solid #B46776;
+  border-top: 1px solid #B46776;
+  height: 100px;
+  padding: 1rem; }
+  @media (min-width: 768px) {
+    .shortInfo,
+    .bookInfo {
+      width: 40vw; } }
+  .shortInfo ol li,
+  .bookInfo ol li {
+    text-align: center;
+    width: 30%;
+    height: 50px;
+    display: inline-block;
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    background-position: center top; }
+    .shortInfo ol li span,
+    .bookInfo ol li span {
+      display: block;
+      padding: 2rem 0 0 0; }
+
+.bookInfo ol li {
+  font-weight: 700; }
+  .bookInfo ol li span {
+    font-style: italic;
+    padding: 0.5rem 0 0 0; }
+
+.shortInfo ol li:nth-child(1) {
+  background-image: url(../images/icons/clock-contrast.svg); }
+
+.shortInfo ol li:nth-child(2) {
+  background-image: url(../images/icons/bestek-contrast.svg); }
+
+.shortInfo ol li:nth-child(3) {
+  background-image: url(../images/icons/printer-contrast.svg); }
+
+.bereiding,
+.samenvatting {
+  color: #555555;
+  border: 1px solid #B46776;
+  padding: 1rem;
+  margin-bottom: 5%; }
+  .bereiding p:first-of-type,
+  .samenvatting p:first-of-type {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 2rem; }
+  .bereiding p,
+  .samenvatting p {
+    line-height: 1.2rem;
+    letter-spacing: 0.08rem; }
+
+.samenvatting {
+  width: 80vw;
+  border: none; }
+  @media (min-width: 768px) {
+    .samenvatting {
+      width: 40vw; } }
+
+.promoBoek {
+  color: #555555;
+  background-color: #f7f0f1; }
+  .promoBoek div.smallContainer > p {
+    font-size: 1.2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    padding: 1rem 0;
+    letter-spacing: 0.08rem; }
+  .promoBoek .bestelBoek {
+    flex-direction: column; }
+    @media (min-width: 540px) {
+      .promoBoek .bestelBoek {
+        flex-direction: row; } }
+    @media (min-width: 768px) {
+      .promoBoek .bestelBoek {
+        justify-content: flex-start; } }
+    @media (min-width: 540px) {
+      .promoBoek .bestelBoek div:nth-child(2) {
+        width: 40%; } }
+    @media (min-width: 768px) {
+      .promoBoek .bestelBoek div:nth-child(2) {
+        margin: 0 0 0 5%; } }
+    .promoBoek .bestelBoek img {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+    .promoBoek .bestelBoek h3 {
+      font-size: 1rem;
+      font-family: "Roboto", sans-serif;
+      padding: 1em 0;
+      letter-spacing: 0.08rem; }
+      @media (min-width: 540px) {
+        .promoBoek .bestelBoek h3 {
+          padding: 0 0 1em 0; } }
+    .promoBoek .bestelBoek p {
+      line-height: 1.2rem;
+      padding: 1rem 0;
+      letter-spacing: 0.08rem; }
+    .promoBoek .bestelBoek a {
+      display: inline-block; }
+
+#winkelWagen {
+  position: relative; }
+
+#bestelItem {
+  position: absolute;
+  opacity: 0;
+  top: -10px;
+  left: 30px;
+  border: 1px solid #FFFFFF;
+  z-index: 20;
+  padding: 0.4rem;
+  border-radius: 50%;
+  background-color: #B46776;
+  color: #FFFFFF; }
+
+/* ====== FOOTER SCSS ====== */
+footer {
+  background-color: #d5d5d5;
+  background-image: url(../images/overige/champignons.svg);
+  background-size: 200%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 2em 0 0 0;
+  /* algemene fonts instellingen binnen de footer-tag */
+  /* contactinformatie */
+  /* social media iconen */
+  /* navigatie in footer */ }
+  footer h2 {
+    display: none; }
+  footer p,
+  footer ol,
+  footer ul,
+  footer span,
+  footer a {
+    font-family: "Open Sans", sans-serif;
+    color: #42635a;
+    text-align: center;
+    letter-spacing: 0.10em; }
+  footer li span:hover,
+  footer a:hover {
+    color: #B46776; }
+  footer .contactInfo,
+  footer .socialMedia {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 20px; }
+    @media (min-width: 768px) {
+      footer .contactInfo,
+      footer .socialMedia {
+        width: calc(50% - 30px);
+        float: left;
+        margin-left: 20px; } }
+    footer .contactInfo p,
+    footer .socialMedia p {
+      /*plaatsen van een border onder de kopteksten */
+      font-weight: 700; }
+      footer .contactInfo p::after,
+      footer .socialMedia p::after {
+        content: "";
+        display: block;
+        margin: 0 auto;
+        width: 10em;
+        height: 10px;
+        border-bottom: 1px solid #B46776; }
+  footer .contactInfo {
+    text-align: left; }
+    footer .contactInfo address {
+      flex-direction: column;
+      align-items: center;
+      padding: 1em 0 2em 0; }
+    footer .contactInfo li {
+      text-align: left;
+      padding: 0.5em; }
+    footer .contactInfo span {
+      margin: 0 1em 0 0; }
+  footer .socialMedia {
+    padding: 0.5em 0; }
+    @media (min-width: 768px) {
+      footer .socialMedia {
+        padding: 0; } }
+    footer .socialMedia ol li {
+      display: inline-block;
+      padding: 1.5em; }
+  footer .central {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 20px; }
+  footer .footerNav {
+    clear: both;
+    background-color: rgba(51, 51, 51, 0.6);
+    padding: 1.5em 0 2em 0;
+    /*copyright onderin de footer */ }
+    footer .footerNav nav {
+      flex-direction: column;
+      padding: 2% 0; }
+      @media (min-width: 768px) {
+        footer .footerNav nav {
+          flex-direction: row; } }
+      footer .footerNav nav p {
+        padding-top: 0; }
+      footer .footerNav nav p, footer .footerNav nav a {
+        color: #FFFFFF;
+        font-size: 0.6rem; }
+      footer .footerNav nav ul li {
+        display: inline-block; }
+    footer .footerNav .rights {
+      padding: 1em 0; }
+      footer .footerNav .rights::after {
+        border-bottom: none; }
+
+/* ====== FORMS SCSS ====== */
+/* ==== iconen voor validatie ==== */
+.fa-check {
+  font-size: 1.4rem;
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  color: #24FF24;
+  padding: 0 0.2em 0 0; }
+
+.fa-times {
+  font-size: 1.4rem;
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  color: #FF2424;
+  padding: 0 0.2em 0 0; }
+
+#mail, #name, #pc, #adr, #wp {
+  position: relative; }
+
+/*==== formulier instellingen ==== */
+label {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem; }
+
+input, textarea {
+  padding: 0 0.5em;
+  margin: 0 0 2% 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+  color: #B46776;
+  border: 1px solid #FFFFFF; }
+  input:focus, textarea:focus {
+    outline: #e8efed auto 5px; }
+  input::placeholder, textarea::placeholder {
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 1; }
+
+input[type="email"]:valid,
+input[type="text"]:valid {
+  border: 1px solid #e8efed; }
+
+input[type="email"]:invalid,
+input[type="text"]:invalid {
+  border: 1px solid #B46776; }
+
+input[type="email"].valid,
+input[type="text"].valid {
+  border: 2px solid #24FF24; }
+
+input[type="email"].invalid,
+input[type="text"].invalid {
+  border: 2px solid #FF2424; }
+
+input[type="submit i"],
+input[type="submit"] {
+  color: #FFFFFF;
+  box-sizing: content-box;
+  background-color: #B46776;
+  transition: background-color 1s, color 2s; }
+  input[type="submit i"]:hover,
+  input[type="submit"]:hover {
+    background-color: #FFFFFF;
+    color: #B46776;
+    cursor: pointer; }
+
+textarea {
+  border: 1px solid #FFFFFF;
+  resize: none;
+  height: 150px; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+  margin: 0 2% 0 0; }
+
+.info {
+  background-color: #578176;
+  color: #FFFFFF; }
+  .info > div {
+    /* de div met de flex-container erin. */
+    height: 350px;
+    flex-direction: column; }
+    @media (min-width: 1024px) {
+      .info > div {
+        height: 200px;
+        flex-direction: row; } }
+  .info .nieuwsbrief,
+  .info .bgLogo {
+    align-self: center; }
+  .info .bgLogo {
+    padding: 0 0 0 0.5rem; }
+    @media (min-width: 1024px) {
+      .info .bgLogo {
+        border-left: 1px solid #42635a; } }
+    .info .bgLogo img {
+      width: 200px; }
+      @media (min-width: 1024px) {
+        .info .bgLogo img {
+          width: 250px; } }
+  .info .nieuwsbrief {
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0.075em;
+    text-align: center; }
+    .info .nieuwsbrief h2 {
+      padding: 1em;
+      line-height: 1.2em; }
+    .info .nieuwsbrief label {
+      display: none; }
+    .info .nieuwsbrief input {
+      height: 25px; }
+    .info .nieuwsbrief input[type="email"] {
+      width: 75%;
+      background-color: #d5d5d5; }
+      @media (min-width: 1024px) {
+        .info .nieuwsbrief input[type="email"] {
+          width: 60%; } }
+    .info .nieuwsbrief input[type="submit"] {
+      width: 75%; }
+      @media (min-width: 1024px) {
+        .info .nieuwsbrief input[type="submit"] {
+          width: 30%; } }
+
+/* ====== google-maps instellingen ====== */
+.maps {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #e8efed;
+  box-sizing: content-box;
+  padding: 0.7em 0; }
+  .maps iframe {
+    width: 100%;
+    height: 300px; }
+
+#location {
+  pointer-events: none; }
+  #location.clicked {
+    /* 'onclick' voegt JQuery voor ons de class "clicked" toe en zal deze selector gaan gelden. */
+    pointer-events: auto; }
+
+/* ====== specificaties contactformulier ====== */
+#contactFormulier {
+  background-color: #e8efed;
+  margin: 5% auto;
+  text-align: center; }
+  @media (min-width: 768px) {
+    #contactFormulier {
+      width: 40vw; } }
+  @media (min-width: 1024px) {
+    #contactFormulier {
+      max-width: 750px; } }
+  #contactFormulier label {
+    display: none; }
+  #contactFormulier legend, #contactFormulier p {
+    font-family: "Roboto", sans-serif;
+    color: #555555;
+    letter-spacing: 0.09em; }
+  #contactFormulier legend {
+    color: #578176;
+    font-size: 1.1rem;
+    padding: 1em 0 0 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.2em;
+    width: 100%;
+    text-align: center; }
+  #contactFormulier p {
+    padding: 0 0 2em 0;
+    font-style: italic; }
+  #contactFormulier input, #contactFormulier textarea {
+    width: 80%; }
+  #contactFormulier input {
+    height: 25px; }
+  #contactFormulier .excerpt {
+    font-size: 0.6rem;
+    font-style: italic;
+    text-align: right;
+    padding: 0.5em 1em; }
+
+@media (min-width: 768px) {
+  .formulier {
+    padding: 0.5em 0;
+    float: right; } }
+
+@media (min-width: 768px) {
+  .contactPage {
+    float: left;
+    margin: 0 0 0 5%; } }
+
+@media (min-width: 1024px) {
+  .contactPage {
+    margin: 0 0 0 15%; } }
+
+.contactPage a, .contactPage p, .contactPage li {
+  font-family: "Open Sans", sans-serif;
+  color: #42635a;
+  text-align: left;
+  letter-spacing: 0.10em;
+  padding: 0.5em 0;
+  line-height: 1.5em; }
+
+.contactPage p {
+  text-align: center; }
+  .contactPage p::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    border-bottom: 1px solid #B46776;
+    width: 15em;
+    height: 2px; }
+
+.contactPage span {
+  padding: 0 0.5em 0 0; }
+
+#bestelFormulier {
+  font-family: "Open Sans", sans-serif;
+  color: #42635a;
+  padding: 1em;
+  /* ====== klantgegevens ====== */
+  /* ====== bestelitems ====== */
+  /* ====== kostenoverzicht ====== */ }
+  #bestelFormulier #btnMan,
+  #bestelFormulier #btnVrouw {
+    display: inline;
+    margin: 0 2% 2% 0; }
+  #bestelFormulier legend {
+    text-align: center;
+    line-height: 1.2em;
+    margin: 0 0 1rem 0;
+    padding: 0.5em; }
+  #bestelFormulier fieldset {
+    margin: 1rem 0; }
+  #bestelFormulier input[type="text"],
+  #bestelFormulier input[type="submit"],
+  #bestelFormulier input[type="email"],
+  #bestelFormulier input[type="tel"] {
+    width: 80%;
+    height: 20px;
+    padding: 12px 20px;
+    display: inline-block; }
+  #bestelFormulier input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    box-sizing: content-box;
+    margin: 0; }
+  #bestelFormulier input:not([type="submit"]) {
+    background-color: #e8efed; }
+  #bestelFormulier .klantgegevens {
+    border: 1px solid #578176;
+    padding: 1em; }
+    #bestelFormulier .klantgegevens label {
+      display: none; }
+    #bestelFormulier .klantgegevens div {
+      margin: 2% 0; }
+    @media (min-width: 1024px) {
+      #bestelFormulier .klantgegevens label {
+        font-size: 0.8rem;
+        width: 15vw;
+        display: inline-block;
+        margin: 0 0.5em 0 0; }
+      #bestelFormulier .klantgegevens input:not([type="radio"]) {
+        width: 50vw; } }
+  #bestelFormulier .bestelgegevens {
+    border: 1px solid #578176;
+    padding: 1em; }
+    #bestelFormulier .bestelgegevens label {
+      display: inline-block; }
+      #bestelFormulier .bestelgegevens label span {
+        font-weight: 300;
+        font-style: italic;
+        padding: 0 0.5em; }
+        #bestelFormulier .bestelgegevens label span::before {
+          content: "- € "; }
+    #bestelFormulier .bestelgegevens input[type="checkbox"] {
+      width: 20px;
+      height: 20px; }
+    #bestelFormulier .bestelgegevens div {
+      flex-direction: column;
+      width: 100%;
+      justify-content: flex-start; }
+      @media (min-width: 1024px) {
+        #bestelFormulier .bestelgegevens div {
+          flex-direction: row;
+          flex-wrap: wrap; } }
+    #bestelFormulier .bestelgegevens .bestelItem {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding: 0.5em 0; }
+      @media (min-width: 1024px) {
+        #bestelFormulier .bestelgegevens .bestelItem {
+          width: 50%; } }
+  #bestelFormulier .totalCosts {
+    background-color: #e8efed;
+    padding: 2em;
+    margin: 2% auto;
+    border: 1px solid #42635a; }
+    #bestelFormulier .totalCosts #costs::before {
+      content: " € "; }
+    #bestelFormulier .totalCosts div:first-of-type p {
+      margin: 2% auto;
+      text-align: center;
+      height: 30px; }
+    #bestelFormulier .totalCosts input[type="submit"] {
+      display: block;
+      width: 30%;
+      margin: 0 auto; }
+
+/* de slider die met js zichtbaar wordt */
+#slider {
+  position: fixed;
+  bottom: 20px;
+  right: -400px;
+  z-index: 999;
+  width: 300px; }
+
+#manueelBestellen {
+  background-color: #f7f0f1;
+  border: 1px solid #B46776;
+  padding: 2em;
+  margin: 1em; }
+  #manueelBestellen p, #manueelBestellen a {
+    color: #555555;
+    line-height: 1.3em; }
+  #manueelBestellen input[type="file"] {
+    display: block;
+    padding: 1em 0;
+    margin: 2% auto;
+    border: none; }
+
+#filters {
+  display: none;
+  font-family: "Open Sans", sans-serif;
+  color: #578176;
+  flex-direction: column;
+  background-color: #e8efed;
+  border: 1px solid #42635a;
+  margin: 0 0 2rem 0; }
+  @media (min-width: 540px) {
+    #filters {
+      width: 30vw; } }
+  @media (min-width: 768px) {
+    #filters {
+      width: 300px; } }
+  #filters form {
+    padding: 1rem; }
+
+#filterWaardering,
+#filterCategorie {
+  background-color: #e8efed;
+  width: 100%;
+  margin: 5%; }
+  #filterWaardering div,
+  #filterCategorie div {
+    font-size: 0.8rem; }
+  #filterWaardering label,
+  #filterCategorie label {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2rem;
+    letter-spacing: 0.09em; }
+  #filterWaardering div,
+  #filterCategorie div {
+    margin-bottom: 1em; }
+
+/*****   ANIMATIONS SCSS *****/
+.advertentie {
+  display: none;
+  position: relative;
+  padding: 2rem 0; }
+  .advertentie p {
+    font-size: 0.6rem;
+    text-align: center;
+    font-style: italic;
+    font-weight: 300;
+    padding: 0 0 1em 0;
+    color: #d5d5d5; }
+
+#animation_container {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  background-color: #cccccc;
+  width: 800px;
+  height: 200px;
+  margin: 0 auto; }
+
+#canvas {
+  cursor: pointer;
+  width: 800px;
+  height: 200px;
+  position: absolute;
+  display: none;
+  background-color: #cccccc; }
+
+#dom_overlay_container {
+  pointer-events: none;
+  overflow: hidden;
+  width: 800px;
+  height: 200px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: none; }
+
+#preload_div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 200px;
+  width: 800px;
+  text-align: center; }
+  #preload_div span {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle; }
+  #preload_div img {
+    vertical-align: middle;
+    max-height: 100%; }
+
+/*****   VIDEO SCSS *****/
+#video1, #video2 {
+  flex-direction: column;
+  align-items: center; }
+  #video1 .videoFrame, #video2 .videoFrame {
+    border: 1px solid #578176;
+    padding: 1rem;
+    text-align: center; }
+  #video1 .summary, #video2 .summary {
+    margin: 1rem 0; }
+  #video1 h2, #video2 h2 {
+    color: #42635a;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    margin: 1rem 0; }
+  #video1 a, #video2 a {
+    color: #42635a; }
+
+#video2 {
+  border-top: 1px solid #d5d5d5; }
+
+.video-js {
+  width: 270px;
+  height: 144px; }
+  @media (min-width: 768px) {
+    .video-js {
+      width: 673px;
+      height: 360px; } }
+
+.video-js .vjs-big-play-button {
+  border: 0.06666em solid ; }
+
+/*****   PRINT SCSS   *****/
+@media print {
+  #siteHeader, aside, footer {
+    display: none; }
+  #recept img {
+    display: none; }
+  .videoPage, #video1, #video2 {
+    display: none; } }
+
+/*
+Exit-styles voor de folderbeveiliging pagina en inlog pagina.
+*/
+.return {
+  height: 100vh;
+  background-color: #e8efed;
+  background-image: url("../images/logo/logo-white.png");
+  background-repeat: no-repeat;
+  background-position: center center; }
+
+.return p, .return a {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  color: #B46776;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em; }
+
+.return p:first-of-type {
+  font-size: 1.4rem;
+  padding-top: 5em; }
+
+/*# sourceMappingURL=cuisine-styles.css.map */

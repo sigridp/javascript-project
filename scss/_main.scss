@@ -1,0 +1,364 @@
+@charset "utf-8";
+/* ====== MAIN SCSS ====== */
+
+//************ HERO IMAGES **************
+    .homePage{
+        background-image: url(../images/overige/bg-oil.jpg);
+    }
+    .boekenPage,
+    .ordering{
+        background-image: url(../images/overige/bg-cookbook.jpg);
+    }
+    .receptenPage,
+    .videoPage{
+        background-image: url(../images/overige/bg-knife.jpg);
+    }
+
+.heroImage{
+        height: 300px;
+        background-color: #{map-get($colors, grey)};
+        background-size: cover;
+        background-position: center center;
+
+        //aanpassing flexContainer
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h1{
+            font-size: 0;   // deze is alleen voor de google-search
+        }
+    
+        h2,p,a{
+            letter-spacing: 0.15em;
+            margin: 0 0 2% 0;
+            text-align: center;
+        }
+    
+        h2,p{
+            @include textShadow(3);
+            font-family: $headFont;
+            font-size: 1.2rem;
+            line-height: 2em;
+            font-weight: 700;        
+            color: #{map-get($colors, neutral)};
+            padding: 0 2em;
+        }
+    
+        h2{
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    
+        p{
+            font-size: 1rem;
+            font-weight: 400;
+            font-style: italic;
+
+        }
+        a{
+            display: block;
+        }
+    
+} //einde hero-images
+
+//************ INLEIDING **************
+.introduction {
+        background-color: #{map-get($colors, greyLighter)};
+        color: #{map-get($colors, grey)};
+        h2,h3{
+            font-family: $headFont;
+            text-align: center;
+            line-height: 2.5em;
+            letter-spacing: 0.08em;
+            // after bij h2,h3
+            &::after{
+                content: '';
+                display: block;
+                border-bottom: 1px solid #{map-get($colors, contrast)};
+                width: 100px;
+                margin: 0 auto 2% auto;
+            }
+        }
+        p{
+            font-family: $bodyFont;
+            line-height: 1.8em;
+            letter-spacing: 0.1em;
+            text-align: center;
+            &:first-of-type{
+                margin: 0 0 1em 0;
+            }
+            &.leftContent{
+               text-align: left;
+            }
+        }
+        a{
+            display: block;
+            margin: 2% auto;
+            width: 8em;
+            text-align: center;
+        }
+}
+
+
+//************ CARDS **************
+#products{
+        background-color: #{map-get($colors, neutral)};
+        .flexContainer{
+            flex-wrap: wrap;
+            width: 100%;
+            }
+        
+        .cards{
+                display: flex;
+                padding: 1rem 0;
+                flex-direction: column;
+                align-items: center;
+                margin: 2% 0;
+                width: 100%;
+                border-bottom: 1px solid #{map-get($colors, greyLighter)};
+                &:nth-child(4){
+                    border-bottom: none;
+                }
+                @include breakpoint(largePhone){
+                    flex-direction: row;
+                    width:45%;
+                    &:nth-child(3),
+                    &:nth-child(4){
+                        border-bottom: none;
+                    }
+                }
+                @include breakpoint(desktop){
+                   width: 23.3%;
+                   border-bottom: none;
+                }
+                .flexContent{
+                    display: flex;
+                    flex-direction: column;
+                    align-self: stretch;
+                    width: 100%;
+                    min-height: 250px;
+                    margin: 5% 0 0 0;
+                    @include breakpoint(desktop){
+                        padding: 0.5em;
+                        min-height: 350px;
+                    }
+                    img{
+                        display: block;
+                        margin: 0 auto 5% auto;
+                        width: 75px;    //iconen bovenin de cards
+                        background-color: #{map-get($colors, contrast)};
+                        padding: 1em 2em;
+                        box-sizing: content-box;    // om te voorkomen dat de afbeelding kleiner wordt
+                        border-radius: 5%;
+                      }
+            }    //einde .flexContent
+        } //einde .cards  
+        
+        h2,
+        h3, 
+        p{
+            font-family: $bodyFont;
+            text-align: center;
+            letter-spacing: 0.07em;
+            color: #{map-get($colors, primaryDarker)};
+            padding: 0.5em 1.8em;
+        }
+        p{
+            font-weight: 300;
+            flex: 1 0 auto;       // om ervoor te zorgen dat de knop gelijk niveau onderaan komt te staan van de card.
+        }
+        h2+p{
+            font-style: italic;
+        }
+
+        & .wideContainer > div:first-of-type::after{
+            content: '';
+            display: block;
+            width: 40%;
+            height: 20px;
+            border-bottom: 1px solid #{map-get($colors, contrast)};
+            margin: 0 auto;
+        }
+}// einde #products section
+
+
+
+//************ BESTEL-PAGINA **************
+
+//a-link inline maken
+
+.introduction a.downloadLink{
+        color: #{map-get($colors, primaryDarker)};
+        font-style: italic;
+        display: inline;
+}
+   
+
+//************ ALGEMEEN-OVERVIEW-PAGINA **************
+// voor gebruikers zonder javascript
+.alternatief{
+    padding: 1rem;
+    
+    a{
+        width: 150px;
+        height: 250px;
+        margin: 2% 4%;
+        font-family: $bodyFont;
+        font-size: 0.8rem;
+        text-align: center;
+        color: #{map-get($colors, primary)};
+        display: inline-block;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    img {
+        margin: 0 0 5% 0;
+        display:block;
+        width: 150px;
+        height: auto;
+    }
+}
+//de waarderings-sterren
+.rating{
+        color: #{map-get($colors, contrast)};
+        text-align: center;
+        }
+
+.bookOverview,
+.receptenOverview{
+        padding: 1rem;
+        flex-direction: column-reverse;
+        @include breakpoint(largePhone){
+            justify-content: space-between;
+            margin: 5% 0;
+            flex-direction: row-reverse;
+            align-items: flex-start;
+        }
+        .ctaAdd {
+            width: 100%;
+        }
+}
+
+        
+#books,
+#recipes{
+        width: 80vw;
+        font-family: $bodyFont;
+        font-size: 1rem;
+        color: #{map-get($colors, primary)};
+}
+
+//************ BOEKEN-OVERVIEW-PAGINA **************
+#productsContainer {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        &>div {
+            width: 250px;
+            height: 400px;
+            text-align: center;
+            border: 1px solid #{map-get($colors, contrast)};
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 0 auto 1rem auto;
+            @include breakpoint(tablet){
+                margin: 0 1rem 1rem 1rem;
+                float:left;
+            }
+            h2{
+                    font-size: 1rem;
+            }
+            h2, p, div{
+                padding-bottom: 1rem;
+                }
+            img {
+                    @include boxShadow(2);
+                    width: 55%;
+                    margin: 0.5rem 0; 
+                }
+            } 
+}
+
+//************ RECEPTEN-OVERVIEW-PAGINA **************
+
+#receptenContainer {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        &>div {
+                width: 250px;
+                height: 400px;
+                text-align: center;
+                border: 1px solid #{map-get($colors, contrast)};
+                border-radius: 4px;
+                padding: 1rem;
+                margin: 0 auto 1rem auto;
+                @include breakpoint(tablet){
+                    margin: 0 1rem 1rem 1rem;
+                    float:left;
+                }
+                h2{
+                        font-size: 1rem;
+                }
+                h2, p, div{
+                    padding: 0.5em 0;
+                }
+                    img{
+                        @include boxShadow(2);
+                        width: 75%;
+                        margin: 0.5rem 0;
+                    }  
+                }
+    
+        .infoGerecht {
+                text-align: center;
+                margin: 0 0 1rem 0;
+                li{
+                    background-size: 30px 30px;
+                    background-repeat: no-repeat;
+                    height: 35px;
+                    padding: 0.5em 0 0 0; //uitlijnen van de tekst ten opzichte van het icon.
+                    width: 75%;
+                    margin: 0 auto;
+                    text-align: left;
+                    text-indent: 50px;
+                }
+                //icon voor bereidingstijd
+                li.tijd{
+                    background-image: url(../images/icons/clock-contrast.svg);
+                }  
+                //icon voor aantal personen
+                li.personen{
+                    background-image: url(../images/icons/bestek-contrast.svg);
+                }
+         
+            } //einde infoGerecht
+}//einde #receptenContainer
+
+//************ BEVEILIGINGS-PAGINA **************
+.retourPage{
+           a{color: #{map-get($colors, contrast)};}
+}
+
+//************ BEVESTIGING-PAGINA **************
+.confirmation{
+        background-color: #{map-get($colors, primaryLighter)};
+        padding: 2rem;
+        height: 400px;
+        width: 500px;
+        margin: 0 auto;
+        p{
+            line-height: 1.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        img {
+            margin: 1%;
+            width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+
+        }
+}

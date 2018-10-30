@@ -1,0 +1,33 @@
+@charset "utf-8";
+/*
+Exit-styles voor de folderbeveiliging pagina en inlog pagina.
+*/
+
+
+
+.return{
+    height: 100vh;
+    background-color: #{map-get($colors, primaryLighter)};
+    background-image:url("../images/logo/logo-white.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+.return p, .return a{
+    font-family: $bodyFont;
+    font-size: 1.2rem;
+    color: #{map-get($colors, contrast)};
+    letter-spacing: 0.1em;
+    text-align:center;
+    line-height: 3em;
+}
+
+.return p:first-of-type{
+    font-size: 1.4rem;
+    padding-top: 5em;
+    
+}
+
+
+

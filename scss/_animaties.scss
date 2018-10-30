@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+/*****   ANIMATIONS SCSS *****/
+
+.advertentie {
+    display: none;
+    position: relative;
+    padding: 2rem 0;
+    p{
+        font-size: 0.6rem;
+        text-align: center;
+        font-style: italic;
+        font-weight: 300;
+        padding: 0 0 1em 0;
+        color: #{map-get($colors, greyLighter)};
+    }
+}
+
+#animation_container {
+    @include boxShadow(3);
+    background-color:rgba(204, 204, 204, 1.00); 
+    width:800px; 
+    height:200px;
+    margin: 0 auto; // in het midden uit lijnen.
+    
+}
+
+#canvas {
+     cursor: pointer;
+     width : 800px;
+     height : 200px;
+     position: absolute; 
+     display: none;
+     background-color:rgba(204, 204, 204, 1.00);
+}
+
+#dom_overlay_container {
+    pointer-events:none; 
+    overflow:hidden; 
+    width:800px; 
+    height:200px; 
+    position: absolute; 
+    left: 0px; 
+    top: 0px; 
+    display: none;
+}
+
+#preload_div {
+    position:absolute; 
+    top:0; 
+    left:0; 
+    display: inline-block; 
+    height:200px; 
+    width: 800px; 
+    text-align: center;
+    span{
+        display: inline-block; 
+        height: 100%; 
+        vertical-align: middle;
+    }
+    img{
+        vertical-align: middle; 
+        max-height: 100%;
+    }
+}

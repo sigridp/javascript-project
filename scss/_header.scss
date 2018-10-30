@@ -1,0 +1,162 @@
+@charset "utf-8";
+/* ====== HEADER SCSS ====== */
+
+//************ NAVIGATIE **************
+#siteHeader{
+        background-color: #{map-get($colors, neutral)};
+        li{
+            /* instellingen voor het plaatsen van iconen voor alle li's in de header */
+            background-repeat: no-repeat;
+        }
+}
+/* ====== hamburgermenu ====== */
+#siteHeader .menuBars{
+        @include grid-column(3);
+        a{                                      /* vormgeven van de menu-bars */
+            font-size: 2.5rem;
+            color: #{map-get($colors, primary)};
+            padding: 1.5rem 0 0 0;
+        }
+
+        @include breakpoint(tablet){
+            display: none;
+        }
+}
+
+/* ====== logo cuisine ====== */
+#siteHeader .logo{
+        width: 100%;           
+        height: auto;
+        @include grid-column(6);
+        
+        @include breakpoint(tablet){
+            @include grid-push(3);
+        }
+        
+        img{
+            display: block;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+        
+}
+
+/* ====== inlog-menu ====== */
+.topHeader .navMenu{
+        @include grid-column(3);   /* bovenste header moet rechts uitgelijnd worden ten opzichte van het logo */ 
+        ol{
+            padding: 2rem 0 0 0;
+        
+            li{ 
+                width: 100%;    /* anders valt het icon weg */
+                height: auto;
+                &:nth-child(2){visibility: hidden;} // pas voor js nodig bij bestellen.
+                a img{
+                    width: 2rem;
+                    transition: background-color 1s ease-in-out;
+                    border-radius: 50%;
+                    padding: 0.5em;
+                    box-sizing: content-box;
+                } 
+                a:hover img{
+                    background-color: #{map-get($colors, contrastLighter)};
+                }
+            } // einde li-tag
+        }   // einde ol-tag
+}   // einde inlog-menu
+
+
+/* ====== navigatie-menu ====== */
+.bottomHeader{
+        position: absolute;
+        padding: 1rem 0; /* even minder padding dan de container van origine heeft */
+        top: 0;
+        left: -999px; 
+        bottom: 0;
+        z-index: 20;
+        background-color: #{map-get($colors, neutral)};
+        width: 100%;
+        @include breakpoint(tablet){
+            position: relative;
+            width: 80vw;
+            border-top: 1px solid #{map-get($colors, contrast)};
+            left: 0;
+        }
+        // kruisje om af te sluiten
+        .closeMenu{
+            color: #{map-get($colors, contrast)};
+            font-size: 1.5rem;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            @include breakpoint(tablet){
+                display: none;
+            }
+        }
+        
+        nav.navMenu ul{
+            flex-direction: column;
+            justify-content: flex-start;
+            padding:0 2rem;
+            li{ 
+                    padding: 1rem 0;
+                    background-size: 1.5rem;
+                    background-position: 0 center;
+                    text-indent: 2rem;
+                    border-bottom: 1px solid #{map-get($colors, primary)};
+                    
+                    /* home */
+                    &:nth-child(1){background-image: url("../images/icons/home-primary.svg");}
+                    /* boeken */
+                    &:nth-child(2){background-image: url("../images/icons/boek-primary.svg");}
+                    /* recepten */
+                    &:nth-child(3){background-image: url("../images/icons/recept-primary.svg");}
+                    /* video */
+                    &:nth-child(4){background-image: url("../images/icons/video-primary.svg");}
+                    /* bestellen */
+                    &:nth-child(5){background-image: url("../images/icons/bestellen-primary.svg");}
+                    /* contact */
+                    &:nth-child(6){background-image: url("../images/icons/contact-primary.svg"); border-bottom: 0px} /* onderste krijgt geen lijntje */
+                    
+                    &.hide { @include breakpoint(tablet){background-image:none !important; padding: 0;}} /* weghalen van de iconen bij scrollen -> js functionaliteit */
+                    
+                    &.active a{
+                        color: #{map-get($colors, contrast)};   /* in verband met proximity op deze plek */
+                    }      
+  
+                        a{
+                            font-family: $bodyFont;
+                            font-weight: 300;
+                            color: #{map-get($colors, primary)};
+                            padding: 0 1rem;
+                            transition: background-color 1s, color 2s;
+                            &:hover{
+                                background-color: #{map-get($colors, contrast)};
+                                color: #{map-get($colors, neutral)};
+                            }
+                          } // einde a-tag
+                } // einde li-tag
+
+            @include breakpoint(tablet){
+                   flex-direction: row;
+                   justify-content: space-around;
+                   padding-left: 0;
+                   li{
+                        border-bottom: 0px;
+                        padding-top: 2em;
+                        background-position: center 0;
+                        text-indent: 0;
+                   } 
+            }
+       }// einde navigatie menu
+
+        
+}// einde bottom header
+
+ 
+   
+
+
+
+
+

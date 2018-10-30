@@ -1,0 +1,120 @@
+@charset "utf-8";
+/* ====== FOOTER SCSS ====== */
+
+footer {
+        background-color: #{map-get($colors, greyLighter)}; 
+        background-image: url(../images/overige/champignons.svg);
+        background-size: 200%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        padding: 2em 0 0 0;
+        
+        /* algemene fonts instellingen binnen de footer-tag */
+        h2{display: none;} 
+        
+        p,
+        ol,
+        ul,
+        span, 
+        a{
+                font-family: $bodyFont;
+                color: #{map-get($colors, primaryDarker)};
+                text-align: center;
+                letter-spacing: 0.10em;
+            }
+            li span:hover,
+            a:hover{
+                color: #{map-get($colors, contrast)};
+            }
+        .contactInfo,
+        .socialMedia{
+            @include grid-column(12);
+            @include breakpoint(tablet){
+                @include grid-column(6);
+            }
+            p{/*plaatsen van een border onder de kopteksten */
+                font-weight: 700;
+                
+                &::after{
+                        content: "";
+                        display: block;
+                        margin: 0 auto;
+                        width: 10em;
+                        height: 10px;
+                        border-bottom: 1px solid #{map-get($colors, contrast)};
+                }
+            }
+        }
+        /* contactinformatie */
+        .contactInfo{
+            text-align: left;
+            address{            
+                flex-direction: column;
+                align-items: center;
+                padding: 1em 0 2em 0;
+                
+            }
+            li {
+                text-align: left;
+                padding: 0.5em;
+            }
+            span{
+                margin: 0 1em 0 0;
+            }
+           
+        }
+        /* social media iconen */
+        .socialMedia{
+            padding:0.5em 0;
+            @include breakpoint(tablet){
+                padding: 0;         //voor het beter uitlijnen van de p-subkopjes.
+            }
+            ol li{
+                display: inline-block;
+                padding: 1.5em;
+            }
+                      
+        }
+        // voor de contact-pagina is de footer aangepast en moet dit blok gecentreerd staan.
+        .central{
+                @include grid-column(12);
+        }
+        /* navigatie in footer */
+        .footerNav{
+            clear: both;    //om de float tegen te gaan van de grid-container
+            background-color: rgba(51, 51, 51,0.6);
+            padding: 1.5em 0 2em 0;
+            nav{
+                flex-direction: column;
+                padding: 2% 0;
+                @include breakpoint(tablet){
+                    flex-direction: row;
+                }
+                p{
+                    padding-top: 0;
+                }
+                p,a {
+                    color: #{map-get($colors, neutral)};
+                    font-size: 0.6rem;
+                }
+                ul
+                {
+                    li{
+                        display: inline-block;
+                      }
+                }
+            } //einde nav-tag
+                
+            /*copyright onderin de footer */
+            .rights{
+                padding: 1em 0;
+                &::after{
+                    border-bottom: none;
+                }
+            }   //einde copyrights
+        }//einde footernav
+        
+    
+        
+
+} //einde footer-tag

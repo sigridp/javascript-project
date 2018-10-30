@@ -1,0 +1,210 @@
+@charset "utf-8";
+/* ====== CONTENT SCSS ====== */
+
+
+#recept, #boek,#video1,#video2{
+        flex-direction: column;
+        align-items: center;
+        @include breakpoint(tablet){
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        justify-content: center;
+        padding: 2rem 0;
+        p,li{
+            font-family: $bodyFont;
+            color: #{map-get($colors, primaryDarker)};
+        }
+
+        img{
+            border: 1px solid #{map-get($colors, primary)};
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .summary{
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            margin: 1rem 0;
+            @include breakpoint(tablet){
+                margin: 0 0 0 1rem;
+                align-items: flex-start;
+            }
+            div:nth-child(3){          //uitlijnen van de bestelknop
+                padding: 1rem;
+            }
+
+            .ingredients{
+                width: 100%;
+                p{
+                    font-weight: 700;
+                    padding: 0 0 0.5rem 0;
+                }
+                padding: 1rem;
+                ul{
+                    list-style-position: inside;
+                    list-style-type: square;
+                } 
+                li{
+                    line-height:1.2rem;
+                }
+            }
+
+        }
+}//einde #recept,#boek en #video
+
+#recept, #boek{
+            span{
+                font-family: $bodyFont;
+                color: #{map-get($colors, primaryDarker)};
+                font-weight: 300;
+            }
+}
+.shortInfo,
+.bookInfo{
+        width: 80vw;
+        @include breakpoint(tablet){
+            width: 40vw;
+        }
+
+        border-bottom: 1px solid #{map-get($colors, contrast)};
+        border-top: 1px solid #{map-get($colors, contrast)};
+        height: 100px;
+        padding: 1rem;
+
+        ol li{
+            text-align: center;
+            width: 30%;
+            height: 50px;
+            display: inline-block;
+            background-size: 2rem;
+            background-repeat: no-repeat;
+            background-position: center top;
+            span{
+                display: block;
+                padding: 2rem 0 0 0;
+            }
+        }
+
+}
+
+.bookInfo{
+        ol li {
+            font-weight: 700;
+            span{
+                font-style: italic;
+                padding: 0.5rem 0 0 0;
+            }
+        }
+
+}
+.shortInfo{
+        ol li:nth-child(1){
+            background-image: url(../images/icons/clock-contrast.svg);
+        }
+        ol li:nth-child(2){
+            background-image: url(../images/icons/bestek-contrast.svg);
+        }
+        ol li:nth-child(3){
+            background-image: url(../images/icons/printer-contrast.svg);
+        }
+}
+
+.bereiding,
+.samenvatting{
+        color: #{map-get($colors, grey)};
+        border: 1px solid #{map-get($colors, contrast)};
+        padding: 1rem;
+        margin-bottom: 5%;
+        p:first-of-type{
+            font-family: $headFont;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 2rem;
+        }
+        p{
+            line-height: 1.2rem;
+            letter-spacing: 0.08rem;
+        }
+}
+
+.samenvatting{
+        width: 80vw;
+        @include breakpoint(tablet){
+            width: 40vw;
+        }
+        border: none;
+}
+
+.promoBoek{
+        color: #{map-get($colors, grey)};
+        background-color: #{map-get($colors, contrastLighter)};
+        div.smallContainer > p {
+            font-size: 1.2rem;
+            font-family: $headFont;
+            font-weight: 700;
+            padding: 1rem 0;
+            letter-spacing: 0.08rem;
+        }
+
+        .bestelBoek{
+                flex-direction : column;
+                @include breakpoint(largePhone){
+                    flex-direction: row;
+                }
+                @include breakpoint(tablet){
+                    justify-content: flex-start;
+                }
+
+                div:nth-child(2){
+                    @include breakpoint(largePhone){
+                        width: 40%;
+                    }
+                    @include breakpoint(tablet){
+                        margin: 0 0 0 5%;
+                    }
+                }
+                //schadow geven aan image    
+                img{
+                    @include boxShadow(4);
+                }
+                h3{
+                    font-size: 1rem;
+                    font-family: $headFont;
+                    padding: 1em 0;
+                    letter-spacing: 0.08rem;
+                    @include breakpoint(largePhone){
+                        padding: 0 0 1em 0;
+                    }
+                }
+                p {
+                    line-height: 1.2rem;
+                    padding: 1rem 0;
+                    letter-spacing: 0.08rem
+                }
+                a {
+                    display: inline-block;
+                }
+            } //einde bestelBoek
+
+} //einde promoBoek
+
+#winkelWagen{
+    position: relative;
+}
+
+#bestelItem{
+    position: absolute;
+    opacity: 0;
+    top: -10px;
+    left: 30px;
+    border: 1px solid #{map-get($colors, neutral)};
+    z-index: 20;
+    padding: 0.4rem;
+    border-radius: 50%;
+    background-color: #{map-get($colors, contrast)};
+    color: #{map-get($colors, neutral)};
+    
+}
+
